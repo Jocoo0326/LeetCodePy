@@ -20,7 +20,7 @@ class Solution(object):
         result = None
         last = None
         j = 0
-        while node1 is not None or node2 is not None:
+        while node1 is not None or node2 is not None or j == 1:
             s = 0
             if node1:
                 s += node1.val
@@ -49,7 +49,8 @@ class Solution(object):
 
 if __name__ == '__main__':
     l1 = ListNode(2)
-    l1.next = ListNode(3)
+    l1.next = ListNode(4)
+    l1.next.next = ListNode(5)
     l2 = ListNode(5)
     l2.next = ListNode(6)
     l2.next.next = ListNode(4)
