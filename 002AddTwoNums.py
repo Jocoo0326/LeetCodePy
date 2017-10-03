@@ -6,9 +6,9 @@ class ListNode(object):
         self.val = x
         self.next = None
 
-    def toString(self):
+    def __str__(self):
         if self.next is not None:
-            return "%s -> %s" % (self.val, self.next.toString())
+            return "%s -> %s" % (self.val, self.next)
         else:
             return "%s" % self.val
 
@@ -51,7 +51,9 @@ if __name__ == '__main__':
     l1 = ListNode(2)
     l1.next = ListNode(4)
     l1.next.next = ListNode(5)
+    print(l1)
     l2 = ListNode(5)
     l2.next = ListNode(6)
     l2.next.next = ListNode(4)
-    print(Solution().addTwoNums(l1, l2).toString())
+    print l2
+    print(Solution().addTwoNums(l1, l2))
