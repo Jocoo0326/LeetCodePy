@@ -15,36 +15,22 @@ class ListNode(object):
 class Solution(object):
     """docstring for Solution"""
     def addTwoNums(self, l1, l2):
-        node1 = l1
-        node2 = l2
-        result = None
-        last = None
-        j = 0
-        while node1 or node2 or j == 1:
-            s = 0
-            if node1:
-                s += node1.val
-            if node2:
-                s += node2.val
-            s += j
-
-            if s > 9:
-                j = 1
-                s = s - 10
-            else:
-                j = 0
-            temp = ListNode(s)
-
-            if result is None:
-                result = last = temp
-            else:
+        carry = 0
+        result = last = None
+        while l1 or l2 or carry:
+            if l1:
+                carry += l1.val
+                l1 = l1.next
+            if l2:
+                carry += l2.val
+                l2 = l2.next
+            temp = ListNode(carry % 10)
+            if result:
                 last.next = temp
                 last = last.next
-
-            if node1:
-                node1 = node1.next
-            if node2:
-                node2 = node2.next
+            else:
+                result = last = temp
+            carry = 1 if carry > 9 else 0
         return result
 
 if __name__ == '__main__':
